@@ -1,0 +1,10 @@
+{
+  "name": "react-hook-stopwatch",
+  "version": "0.0.1",
+  "description": "The stopwatch component for react with hooks",
+  "main": "index.ts",
+  "repository": "git@github.com:memenashi/react-hook-stopwatch.git",
+  "author": "memenashi <shunsuke.vrml@icloud.com>",
+  "license": "MIT",
+  "private": false
+}
