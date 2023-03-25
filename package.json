@@ -2,11 +2,20 @@
   "name": "react-hook-stopwatch",
   "version": "0.0.1",
   "description": "The stopwatch component for react with hooks",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "repository": "git@github.com:memenashi/react-hook-stopwatch.git",
   "author": "memenashi <shunsuke.vrml@icloud.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "storybook": "storybook dev -p 6006"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
   "dependencies": {
     "@storybook/react": "^7.0.0-rc.8",
     "date-fns": "^2.29.3",
