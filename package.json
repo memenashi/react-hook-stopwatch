@@ -33,7 +33,7 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@storybook/addon-essentials": "^7.0.0-rc.8",
     "@storybook/react-webpack5": "^7.0.0-rc.8",
-    "@types/react": "^18.0.29",
+    "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.36.0",
     "eslint-plugin-react": "^7.32.2",
