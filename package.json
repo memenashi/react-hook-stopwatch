@@ -17,7 +17,7 @@
     "types"
   ],
   "dependencies": {
-    "@storybook/react": "^7.0.0-rc.8",
+    "@storybook/react": "^7.0.0-rc.10",
     "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
