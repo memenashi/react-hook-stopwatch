@@ -3,6 +3,7 @@
     "streetsidesoftware.code-spell-checker",
     "dbaeumer.vscode-eslint",
     "yzhang.markdown-all-in-one",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "orta.vscode-jest"
   ]
 }
