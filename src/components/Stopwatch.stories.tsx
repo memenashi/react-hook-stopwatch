@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
+import { RenderDemo } from "../demo/RenderDemo";
 import { Stopwatch, StopwatchProps } from "./Stopwatch";
 
 export default {
@@ -9,15 +10,17 @@ const Template: StoryFn<StopwatchProps> = (args) => <Stopwatch {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
-  render: ({ field: { hours, minutes, seconds } }) => (
-    <span>{`${hours}:${minutes}:${seconds}`}</span>
-  ),
+  render: RenderDemo,
+};
+
+export const LocalStorageMode = Template.bind({});
+LocalStorageMode.args = {
+  render: RenderDemo,
+  option: { mode: "local", key: "stopwatch" },
 };
 
 export const AutoStart = Template.bind({});
 AutoStart.args = {
   autoStart: true,
-  render: ({ field: { hours, minutes, seconds } }) => (
-    <span>{`${hours}:${minutes}:${seconds}`}</span>
-  ),
+  render: RenderDemo,
 };

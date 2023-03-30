@@ -10,7 +10,8 @@
   "private": false,
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "prettier:fix": "prettier --write ."
   },
   "files": [
     "dist",
