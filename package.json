@@ -18,11 +18,9 @@
     "types"
   ],
   "dependencies": {
-    "@storybook/react": "^7.0.0-rc.10",
     "date-fns": "^2.29.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^7.0.0-rc.10"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -32,8 +30,9 @@
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
-    "@storybook/addon-essentials": "7.0.0-rc.10",
-    "@storybook/react-webpack5": "^7.0.0-rc.10",
+    "@storybook/addon-essentials": "7",
+    "@storybook/react": "7",
+    "@storybook/react-webpack5": "7",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^29.5.0",
     "@types/react": "^18.0.31",
@@ -49,6 +48,7 @@
     "rollup": "^3.20.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.34.1",
+    "storybook": "7",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
