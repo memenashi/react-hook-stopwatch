@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useStorageState } from "./useStorageState";
 
 type DateKey = string;
 
@@ -9,6 +10,7 @@ interface DateOptionBase {
 
 export interface StateDateOption extends DateOptionBase {
   mode: "state";
+  key: undefined;
 }
 
 export interface LocalDateOption extends DateOptionBase {
@@ -25,24 +27,10 @@ export const useDate: (option: UseDateOption) => {
   setDate: (value: DispatchDate) => void;
 } = (option) => {
   const [time, setTime] = useState<NullableDate>(option.defaultValue);
+  const [localTime, setLocalTime] = useStorageState<NullableDate>(
+    `time_${option.key ?? ""}`,
+    option.defaultValue
+  );
   if (option.mode == "state") return { date: time, setDate: setTime };
-
-  const key = option.key;
-  const date = getLocalStorageDate();
-
-  function getLocalStorageDate() {
-    const dateStr = localStorage.getItem(key);
-    if (dateStr?.trim()) return new Date(dateStr);
-    return null;
-  }
-
-  function setLocalStorageDate(value: DispatchDate) {
-    const newDate = typeof value == "function" ? value(date) : value;
-    if (newDate) {
-      localStorage.setItem(key, newDate.toISOString());
-    } else {
-      localStorage.removeItem(key);
-    }
-  }
-  return { date: getLocalStorageDate(), setDate: setLocalStorageDate };
+  return { date: localTime, setDate: setLocalTime };
 };
