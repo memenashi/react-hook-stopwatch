@@ -20,3 +20,25 @@ interface StopWatchOperations {
   reset: () => void;
   resume: () => void;
 }
+
+interface StopwatchOption {
+  // autoStart?: boolean;
+  option?: Omit<UseDateOption, "defaultValue">;
+}
+
+interface StateDateOption extends DateOptionBase {
+  mode: "state";
+  key?: never;
+}
+
+interface LocalDateOption extends DateOptionBase {
+  mode: "local";
+  key: DateKey;
+}
+
+type UseDateOption = StateDateOption | LocalDateOption;
+
+interface DateOptionBase {
+  mode: "state" | "local";
+  defaultValue?: Date;
+}

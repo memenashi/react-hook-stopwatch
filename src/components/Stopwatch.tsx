@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { StopwatchOption, useStopwatch } from "../hooks/useStopwatch";
+import { useStopwatch } from "../hooks/useStopwatch";
 
 export interface StopwatchRenderProps {
   startAt: NullableDate;
@@ -13,11 +13,7 @@ export interface StopwatchComponentProps {
 
 export type StopwatchProps = StopwatchComponentProps & StopwatchOption;
 
-export const Stopwatch: FC<StopwatchProps> = ({
-  autoStart = false,
-  option = { mode: "state" },
-  render: Render,
-}) => {
-  const { startAt, interval, operations } = useStopwatch({ autoStart, option });
+export const Stopwatch: FC<StopwatchProps> = ({ option = { mode: "state" }, render: Render }) => {
+  const { startAt, interval, operations } = useStopwatch({ option });
   return <Render startAt={startAt} field={interval} operation={operations} />;
 };

@@ -5,27 +5,15 @@ import {
   differenceInSeconds,
 } from "date-fns";
 import { useEffect, useState } from "react";
-import { StateDateOption, useDate, UseDateOption } from "./useTime";
-
-export interface StopwatchOption {
-  autoStart?: boolean;
-  option?: UseDateOption;
-}
+import { useDate } from "./useTime";
 
 const defaultStateDateOption = { mode: "state" } as StateDateOption;
-const defaultOption = {
-  autoStart: false,
-  option: defaultStateDateOption,
-  defaultValue: new Date(),
-};
 
-export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = ({
-  autoStart = defaultOption.autoStart,
-  option = defaultOption.option,
-} = defaultOption) => {
+export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
+  { option = defaultStateDateOption } = { option: defaultStateDateOption }
+) => {
   const useDateOption = {
     ...option,
-    defaultValue: autoStart ? new Date() : undefined,
   };
   const { date: startAt, setDate: setStartAt } = useDate({
     ...useDateOption,
@@ -35,8 +23,8 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = ({
     ...useDateOption,
     key: useDateOption.mode == "local" ? `${useDateOption.key}_temp` : undefined,
   } as UseDateOption);
-  const [isRunning, setIsRunning] = useState(autoStart);
-  const [calcTime, setCalculatedTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [calcTime, setCalculatedTime] = useState(tempTime ? tempTime.getTime() : 0);
 
   const start = () => {
     setIsRunning(true);
@@ -59,7 +47,7 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = ({
     setCalculatedTime(0);
   };
 
-  /** the stop function returns Interval from start */
+  /** returns Interval from start */
   const stop = () => {
     if (!startAt) throw new Error("date is null");
     setIsRunning(false);

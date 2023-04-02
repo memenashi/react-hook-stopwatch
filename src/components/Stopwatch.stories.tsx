@@ -18,9 +18,3 @@ LocalStorageMode.args = {
   render: RenderDemo,
   option: { mode: "local", key: "stopwatch" },
 };
-
-export const AutoStart = Template.bind({});
-AutoStart.args = {
-  autoStart: true,
-  render: RenderDemo,
-};
