@@ -6,8 +6,10 @@ export const RenderDemo: FC<StopwatchRenderProps> = ({
   field: { hours, minutes, seconds },
   operation,
 }) => (
-  <div style={{ display: "flex", flexDirection: "column", alignItems: "stretch" }}>
-    <span>{`${hours}:${minutes}:${seconds}`}</span>
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
+    <span>{`${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`}</span>
     {!operation.isRunning && (
       <>
         {!startAt && <button onClick={operation.start}>Start</button>}
