@@ -21,7 +21,7 @@ overrides:
       trailingComma: "es5"
       bracketSpacing: true
       bracketSameLine: false
-      arrowParens: "always"
+      arrowParents: "always"
       requirePragma: false
       insertPragma: false
       htmlWhitespaceSensitivity: "css"
