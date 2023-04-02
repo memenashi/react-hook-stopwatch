@@ -10,7 +10,7 @@ interface DateOptionBase {
 
 export interface StateDateOption extends DateOptionBase {
   mode: "state";
-  key: undefined;
+  key?: undefined;
 }
 
 export interface LocalDateOption extends DateOptionBase {
@@ -29,7 +29,11 @@ export const useDate: (option: UseDateOption) => {
   const [time, setTime] = useState<NullableDate>(option.defaultValue);
   const [localTime, setLocalTime] = useStorageState<NullableDate>(
     `time_${option.key ?? ""}`,
-    option.defaultValue
+    option.defaultValue,
+    (_key, value) => {
+      if (value === null) return value;
+      return new Date(value);
+    }
   );
   if (option.mode == "state") return { date: time, setDate: setTime };
   return { date: localTime, setDate: setLocalTime };
