@@ -1,11 +1,11 @@
 {
   "name": "react-hook-stopwatch",
   "version": "0.0.1",
-  "description": "The stopwatch component for react with hooks",
+  "description": "The stopwatch component for react with hook and local storage",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "repository": "git@github.com:memenashi/react-hook-stopwatch.git",
-  "author": "memenashi <shunsuke.vrml@icloud.com>",
+  "author": "memenashi <shunsuke.vrml.frm@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
