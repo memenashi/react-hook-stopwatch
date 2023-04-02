@@ -1,18 +1,17 @@
 import { useState } from "react";
 
-type NullableDate = Date | null | undefined;
-
-type DateKey = string | string[];
+type DateKey = string;
 
 interface DateOptionBase {
   mode: "state" | "local";
+  defaultValue?: Date;
 }
 
-interface StateDateOption extends DateOptionBase {
+export interface StateDateOption extends DateOptionBase {
   mode: "state";
 }
 
-interface LocalDateOption extends DateOptionBase {
+export interface LocalDateOption extends DateOptionBase {
   mode: "local";
   key: DateKey;
 }
@@ -25,26 +24,25 @@ export const useDate: (option: UseDateOption) => {
   date: NullableDate;
   setDate: (value: DispatchDate) => void;
 } = (option) => {
-  const [time, setTime] = useState<NullableDate>();
-  if (option.mode == "local") {
-    const keyStr = typeof option.key == "string" ? option.key : option.key.join(".");
-    const date = getLocalStorageDate();
+  const [time, setTime] = useState<NullableDate>(option.defaultValue);
+  if (option.mode == "state") return { date: time, setDate: setTime };
 
-    function getLocalStorageDate() {
-      const dateStr = localStorage.getItem(keyStr);
-      if (dateStr) return new Date(dateStr);
-      return null;
-    }
+  const key = option.key;
+  const date = getLocalStorageDate();
 
-    function setLocalStorageDate(value: DispatchDate) {
-      const newDate = typeof value == "function" ? value(date) : value;
-      if (newDate) {
-        localStorage.setItem(keyStr, newDate.toISOString());
-      } else {
-        localStorage.removeItem(keyStr);
-      }
-    }
-    return { date, setDate: setLocalStorageDate };
+  function getLocalStorageDate() {
+    const dateStr = localStorage.getItem(key);
+    if (dateStr?.trim()) return new Date(dateStr);
+    return null;
   }
-  return { date: time, setDate: setTime };
+
+  function setLocalStorageDate(value: DispatchDate) {
+    const newDate = typeof value == "function" ? value(date) : value;
+    if (newDate) {
+      localStorage.setItem(key, newDate.toISOString());
+    } else {
+      localStorage.removeItem(key);
+    }
+  }
+  return { date: getLocalStorageDate(), setDate: setLocalStorageDate };
 };

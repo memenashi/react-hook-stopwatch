@@ -1,21 +1,22 @@
+type NullableDate = Date | null | undefined;
+
 interface UseStopwatchReturn {
-  startAt: Date;
-  interval: Interval;
-  raps: Interval[];
-  operations: Operations;
+  startAt: NullableDate;
+  interval: StopWatchDuration;
+  operations: StopWatchOperations;
 }
 
-interface Interval {
+interface StopWatchDuration {
   milliseconds: number;
   seconds: number;
   minutes: number;
   hours: number;
-  dates: number;
 }
 
-interface Operations {
+interface StopWatchOperations {
+  isRunning: boolean;
   start: () => void;
-  stop: () => Interval;
+  stop: () => StopWatchDuration;
   reset: () => void;
-  rap: () => Interval;
+  resume: () => void;
 }
