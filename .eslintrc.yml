@@ -13,9 +13,23 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+  - react-hooks
+  - import
   - "@typescript-eslint"
 rules:
   "react/jsx-uses-react": "off"
   "react/react-in-jsx-scope": "off"
   "react-hooks/exhaustive-deps": "error"
   "react-hooks/rules-of-hooks": "error"
+  "no-unused-vars": "warn"
+  "import" :
+    - "error"
+    - "groups"
+      - "builtin"
+      - "external"
+      - "internal"
+      - "parent"
+      - "sibling"
+      - "index"
+    - "newlines-between"
+      - "always"
