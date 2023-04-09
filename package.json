@@ -1,6 +1,6 @@
 {
   "name": "react-hook-stopwatch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The stopwatch component for react with hook and local storage",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -50,6 +50,7 @@
     "prettier-plugin-md-nocjsp": "^1.5.1",
     "react-test-renderer": "^18.2.0",
     "rollup": "^3.20.2",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.34.1",
     "storybook": "7",

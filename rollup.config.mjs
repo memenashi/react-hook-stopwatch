@@ -2,6 +2,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "rollup-plugin-typescript2";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import copy from "rollup-plugin-copy";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -34,6 +35,9 @@ export default [
           include: ["src/**/*.ts", "src/**/*.tsx"],
           exclude: ["**/*.test.ts", "**/*.test.tsx"],
         },
+      }),
+      copy({
+        targets: [{ src: "src/type/type.d.ts", dest: "dist/type" }],
       }),
     ],
   },
