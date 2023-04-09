@@ -1,4 +1,5 @@
 import { act, renderHook } from "@testing-library/react-hooks";
+import { StopwatchOption } from "../type/type";
 import { useStopwatch } from "./useStopwatch";
 
 describe("useStopwatch", () => {
