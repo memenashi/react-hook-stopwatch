@@ -5,6 +5,7 @@ import {
   differenceInSeconds,
 } from "date-fns";
 import { useEffect, useState } from "react";
+import { StateDateOption, StopwatchOption, UseStopwatchReturn, UseDateOption } from "../type/type";
 import { useDate } from "./useTime";
 
 const defaultStateDateOption = { mode: "state" } as StateDateOption;

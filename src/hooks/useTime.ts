@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NullableDate, UseDateOption } from "../type/type";
 import { useStorageState } from "./useStorageState";
 
 export type DispatchDate = NullableDate | ((prev: NullableDate) => NullableDate);
