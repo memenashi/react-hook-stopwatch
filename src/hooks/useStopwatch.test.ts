@@ -17,6 +17,10 @@ describe("useStopwatch", () => {
   });
 
   describe("state mode", () => {
+    beforeEach(() => {
+      localStorage.clear();
+    });
+
     test("can start", () => {
       const { result } = renderHook(() => useStopwatch());
       act(() => {
@@ -61,6 +65,10 @@ describe("useStopwatch", () => {
   });
 
   describe("local mode", () => {
+    beforeEach(() => {
+      localStorage.clear();
+    });
+
     const localStopwatchOption: StopwatchOption = { option: { mode: "local", key: "test" } };
     test("can start", () => {
       const { result } = renderHook(() => useStopwatch(localStopwatchOption));
