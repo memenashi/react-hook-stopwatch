@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { StopwatchRenderProps } from "../components/Stopwatch";
+import { format } from "date-fns";
 
 export const RenderDemo: FC<StopwatchRenderProps> = ({
   startAt,
@@ -7,6 +8,7 @@ export const RenderDemo: FC<StopwatchRenderProps> = ({
   operation,
 }) => (
   <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
+    <span>start at:{startAt ? format(startAt, "yyyy/MM/dd HH:mm:ss") : ""}</span>
     <span>{`${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`}</span>

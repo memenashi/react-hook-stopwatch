@@ -1,19 +1,18 @@
-export type NullableDate = Date | null | undefined;
+type NullableDate = Date | null | undefined;
 
-export interface UseStopwatchReturn {
+interface UseStopwatchReturn {
   startAt: NullableDate;
   interval: StopWatchDuration;
   operations: StopWatchOperations;
 }
 
-export interface StopWatchDuration {
-  milliseconds: number;
+interface StopWatchDuration {
   seconds: number;
   minutes: number;
   hours: number;
 }
 
-export interface StopWatchOperations {
+interface StopWatchOperations {
   isRunning: boolean;
   start: () => void;
   stop: () => StopWatchDuration;
@@ -38,7 +37,12 @@ interface LocalDateOption extends DateOptionBase {
 
 type UseDateOption = StateDateOption | LocalDateOption;
 
-export interface DateOptionBase {
+interface UseDateReturn {
+  date: NullableDate;
+  setDate: (value: DispatchDate) => void;
+}
+
+interface DateOptionBase {
   mode: "state" | "local";
   defaultValue?: Date;
 }
