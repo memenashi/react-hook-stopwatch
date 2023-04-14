@@ -19,6 +19,10 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     ...useDateOption,
     key: useDateOption.mode == "local" ? `${useDateOption.key}_start` : undefined,
   } as UseDateOption);
+  const { date: restartDate, setDate: setRestartDate } = useDate({
+    ...useDateOption,
+    key: useDateOption.mode == "local" ? `${useDateOption.key}_temp` : undefined,
+  } as UseDateOption);
   const { date: tempTime, setDate: setTempTime } = useDate({
     ...useDateOption,
     key: useDateOption.mode == "local" ? `${useDateOption.key}_temp` : undefined,
@@ -28,17 +32,19 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
 
   const start = () => {
     setIsRunning(true);
-    setStartAt(new Date());
+    const now = new Date();
+    setStartAt(now);
+    setRestartDate(now);
     setCalculatedTime(Date.now());
   };
 
   /** restart the stopwatch */
   const resume = () => {
-    if (!startAt) throw new Error("startAt is null");
+    if (!restartDate) throw new Error("startAt is null");
     if (!tempTime) throw new Error("resume date is null");
     setIsRunning(true);
-    const durationBetweenStartAndTemp = tempTime.getTime() - startAt.getTime();
-    setStartAt(new Date(Date.now() - durationBetweenStartAndTemp));
+    const durationBetweenStartAndTemp = tempTime.getTime() - restartDate.getTime();
+    setRestartDate(new Date(Date.now() - durationBetweenStartAndTemp));
     setCalculatedTime(Date.now());
   };
 
@@ -74,14 +80,15 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     };
   }, [isRunning, startAt]);
 
+  const getInterval = (date: NullableDate) => ({
+    seconds: date && calcTime ? differenceInSeconds(calcTime, date) % 60 : 0,
+    minutes: date && calcTime ? differenceInMinutes(calcTime, date) % 60 : 0,
+    hours: date && calcTime ? differenceInHours(calcTime, date) % 24 : 0,
+  });
+
   return {
     startAt,
-    interval: {
-      milliseconds: startAt && calcTime ? differenceInMilliseconds(calcTime, startAt) % 1000 : 0,
-      seconds: startAt && calcTime ? differenceInSeconds(calcTime, startAt) % 60 : 0,
-      minutes: startAt && calcTime ? differenceInMinutes(calcTime, startAt) % 60 : 0,
-      hours: startAt && calcTime ? differenceInHours(calcTime, startAt) % 24 : 0,
-    },
+    interval: getInterval(restartDate),
     operations: {
       isRunning,
       stop,

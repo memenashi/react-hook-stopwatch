@@ -7,7 +7,6 @@ interface UseStopwatchReturn {
 }
 
 interface StopWatchDuration {
-  milliseconds: number;
   seconds: number;
   minutes: number;
   hours: number;

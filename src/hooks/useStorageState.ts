@@ -9,10 +9,15 @@ export function useStorageState<T>(
 ): [T | undefined, SetValue<T | undefined>] {
   const [storedValue, setStoredValue] = useState<T | undefined>(() => {
     const item = window.localStorage.getItem(key);
-    return item ? JSON.parse(item, reviver) : initialValue;
+    try {
+      return item ? JSON.parse(item, reviver) : initialValue;
+    } catch {
+      return undefined;
+    }
   });
 
   useEffect(() => {
+    if (!storedValue) return;
     window.localStorage.setItem(key, JSON.stringify(storedValue));
   }, [key, storedValue]);
 
