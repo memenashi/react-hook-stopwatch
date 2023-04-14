@@ -1,11 +1,5 @@
 import { FC } from "react";
 import { useStopwatch } from "../hooks/useStopwatch";
-import {
-  NullableDate,
-  StopWatchDuration,
-  StopWatchOperations,
-  StopwatchOption,
-} from "../type/type";
 
 export interface StopwatchRenderProps {
   startAt: NullableDate;
