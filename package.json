@@ -1,6 +1,6 @@
 {
   "name": "react-hook-stopwatch",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This is a stopwatch hook for React that uses local storage.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
