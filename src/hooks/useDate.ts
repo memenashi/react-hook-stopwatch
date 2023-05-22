@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStorageState } from "./useStorageState";
-
-export type DispatchDate = NullableDate | ((prev: NullableDate) => NullableDate);
+import { UseDateOption, UseDateReturn } from "../types/useDateOption";
+import { NullableDate } from "../types/nullableDate";
 
 export const useDate: (option: UseDateOption) => UseDateReturn = ({ defaultValue, key, mode }) => {
   const [time, setTime] = useState<NullableDate>(defaultValue);

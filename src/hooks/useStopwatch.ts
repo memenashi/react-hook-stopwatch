@@ -6,6 +6,8 @@ import {
 } from "date-fns";
 import { useEffect, useState } from "react";
 import { useDate } from "./useDate";
+import { StateDateOption, UseDateOption } from "../types/useDateOption";
+import { StopwatchOption, UseStopwatchReturn } from "../types";
 
 const defaultStateDateOption = { mode: "state" } as StateDateOption;
 
@@ -80,7 +82,7 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     };
   }, [isRunning, startAt]);
 
-  const getInterval = (date: NullableDate) => ({
+  const getInterval = (date: Date | null | undefined) => ({
     seconds: date && calcTime ? differenceInSeconds(calcTime, date) % 60 : 0,
     minutes: date && calcTime ? differenceInMinutes(calcTime, date) % 60 : 0,
     hours: date && calcTime ? differenceInHours(calcTime, date) % 24 : 0,

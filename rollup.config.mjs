@@ -32,6 +32,7 @@ export default [
             declaration: true,
             declarationDir: "dist",
           },
+          clean: true,
           include: ["src/**/*.ts", "src/**/*.tsx"],
           exclude: ["**/*.test.ts", "**/*.test.tsx"],
         },

@@ -4,6 +4,7 @@
   "description": "This is a stopwatch hook for React that uses local storage.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:memenashi/react-hook-stopwatch.git",
   "author": "memenashi <shunsuke.vrml.frm@gmail.com>",
   "license": "MIT",

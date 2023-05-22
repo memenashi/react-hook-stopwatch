@@ -1,6 +1,7 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import { useStorageState } from "./useStorageState";
 import { useDate } from "./useDate";
+import { UseDateOption } from "../types/useDateOption";
 
 // Mock the useStorageState hook
 jest.mock("./useStorageState");
@@ -8,7 +9,7 @@ jest.mock("./useStorageState");
 const mockUseStorageState = useStorageState as jest.MockedFunction<typeof useStorageState>;
 
 test("should return date and setDate with local mode", () => {
-  const defaultValue: NullableDate = new Date();
+  const defaultValue = new Date();
   const option: UseDateOption = { defaultValue, key: "test_key", mode: "local" };
 
   const mockSetDate = jest.fn();
