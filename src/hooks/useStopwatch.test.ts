@@ -1,15 +1,21 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 
 import { useStopwatch } from "./useStopwatch";
+import { StopwatchOption } from "../types";
 
 describe("useStopwatch", () => {
+  let originalSetInterval;
+  let originalClearInterval;
+
   const mockSetInterval = jest.fn();
   const mockClearInterval = jest.fn();
 
   beforeAll(() => {
-    global.window = Object.create(window);
-    Object.defineProperty(window, "setInterval", { value: mockSetInterval });
-    Object.defineProperty(window, "clearInterval", { value: mockClearInterval });
+    originalSetInterval = window.setInterval;
+    originalClearInterval = window.clearInterval;
+
+    window.setInterval = mockSetInterval as any;
+    window.clearInterval = mockClearInterval as any;
   });
 
   test("should be defined", () => {
