@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
     "storybook": "storybook dev -p 6006",
-    "test": "jest",
+    "test": "jest src",
     "prettier:fix": "prettier --write ."
   },
   "files": [
