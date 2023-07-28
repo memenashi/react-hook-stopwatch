@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useStorageState } from "./useStorageState";
 import { UseDateOption, UseDateReturn } from "../types/useDateOption";
 import { NullableDate } from "../types/nullableDate";
@@ -14,5 +14,8 @@ export const useDate: (option: UseDateOption) => UseDateReturn = ({ defaultValue
     }
   );
   const isState = mode == "state";
-  return { date: isState ? time : localTime, setDate: isState ? setTime : setLocalTime };
+  return useMemo(
+    () => ({ date: isState ? time : localTime, setDate: isState ? setTime : setLocalTime }),
+    [localTime, setLocalTime, time, isState, setTime]
+  );
 };

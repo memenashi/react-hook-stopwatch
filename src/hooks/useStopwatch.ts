@@ -4,7 +4,7 @@ import {
   differenceInMinutes,
   differenceInSeconds,
 } from "date-fns";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDate } from "./useDate";
 import { StateDateOption, UseDateOption } from "../types/useDateOption";
 import { StopwatchOption, UseStopwatchReturn } from "../types";
@@ -41,22 +41,22 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
   };
 
   /** restart the stopwatch */
-  const resume = () => {
+  const resume = useCallback(() => {
     if (!restartDate) throw new Error("startAt is null");
     if (!tempTime) throw new Error("resume date is null");
     setIsRunning(true);
     const durationBetweenStartAndTemp = tempTime.getTime() - restartDate.getTime();
     setRestartDate(new Date(Date.now() - durationBetweenStartAndTemp));
     setCalculatedTime(Date.now());
-  };
+  }, [restartDate, tempTime, restartDate]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setStartAt(null);
     setCalculatedTime(0);
-  };
+  }, []);
 
   /** returns Interval from start */
-  const stop = () => {
+  const stop = useCallback(() => {
     if (!startAt) throw new Error("date is null");
     setIsRunning(false);
     const now = new Date();
@@ -68,7 +68,7 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     };
     setTempTime(now);
     return interval;
-  };
+  }, []);
 
   useEffect(() => {
     let timerInterval: number | undefined = undefined;
@@ -82,11 +82,14 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     };
   }, [isRunning, startAt]);
 
-  const getInterval = (date: Date | null | undefined) => ({
-    seconds: date && calcTime ? differenceInSeconds(calcTime, date) % 60 : 0,
-    minutes: date && calcTime ? differenceInMinutes(calcTime, date) % 60 : 0,
-    hours: date && calcTime ? differenceInHours(calcTime, date) % 24 : 0,
-  });
+  const getInterval = useCallback(
+    (date: Date | null | undefined) => ({
+      seconds: date && calcTime ? differenceInSeconds(calcTime, date) % 60 : 0,
+      minutes: date && calcTime ? differenceInMinutes(calcTime, date) % 60 : 0,
+      hours: date && calcTime ? differenceInHours(calcTime, date) % 24 : 0,
+    }),
+    []
+  );
 
   return {
     startAt,
