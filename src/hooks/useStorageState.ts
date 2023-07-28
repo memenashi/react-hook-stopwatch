@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 type SetValue<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -21,5 +21,5 @@ export function useStorageState<T>(
     window.localStorage.setItem(key, JSON.stringify(storedValue));
   }, [key, storedValue]);
 
-  return [storedValue, setStoredValue];
+  return useMemo(() => [storedValue, setStoredValue], [storedValue, setStoredValue]);
 }
