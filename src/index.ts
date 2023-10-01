@@ -1,1 +1,1 @@
-export { useStopwatch } from "./hooks/useStopwatch";
+export * from "./hooks/useStopwatch";
