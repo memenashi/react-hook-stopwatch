@@ -12,3 +12,6 @@
 .DS_Store
 .env
 npm-debug.log
+
+.yarn/*
+!.yarn/releases
