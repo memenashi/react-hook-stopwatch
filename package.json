@@ -8,7 +8,6 @@
   "repository": "git@github.com:memenashi/react-hook-stopwatch.git",
   "author": "memenashi <shunsuke.vrml.frm@gmail.com>",
   "license": "MIT",
-  "private": false,
   "engines": {
     "node": ">=18.0.0"
   },
@@ -47,7 +46,6 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "prettier": "^3.0.0",
-    "prettier-plugin-md-nocjsp": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
@@ -64,5 +62,6 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "packageManager": "yarn@4.0.0"
 }
