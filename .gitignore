@@ -13,4 +13,5 @@
 .env
 npm-debug.log
 
-.yarn
+.yarn/*
+!.yarn/releases
