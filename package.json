@@ -15,7 +15,9 @@
     "build": "rollup --config rollup.config.mjs",
     "storybook": "storybook dev -p 6006",
     "test": "jest",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "eslint:fix": "eslint --fix . --ext .ts,.tsx",
+    "eslint": "eslint . --ext .ts,.tsx"
   },
   "files": [
     "dist",
@@ -39,6 +41,8 @@
     "@types/jest": "^29.5.0",
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
     "eslint": "^8.37.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
