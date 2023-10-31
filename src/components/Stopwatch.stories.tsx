@@ -1,5 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
+
 import { RenderDemo } from "../demo/RenderDemo";
+
 import { Stopwatch, StopwatchProps } from "./Stopwatch";
 
 export default {

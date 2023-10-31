@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { StopwatchRenderProps } from "../components/Stopwatch";
 import { format } from "date-fns";
+
+import { StopwatchRenderProps } from "../components/Stopwatch";
 
 export const RenderDemo: FC<StopwatchRenderProps> = ({
   startAt,

@@ -4,16 +4,17 @@ import {
   differenceInMinutes,
   differenceInSeconds,
 } from "date-fns";
-import { useEffect, useState } from "react";
-import { useDate } from "./useDate";
+import { useCallback, useEffect, useMemo, useState } from "react";
+
 import { StateDateOption, UseDateOption } from "../types/useDateOption";
 import { StopwatchOption, UseStopwatchReturn } from "../types";
 
+import { useDate } from "./useDate";
+
 const defaultStateDateOption = { mode: "state" } as StateDateOption;
 
-export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
-  { option = defaultStateDateOption } = { option: defaultStateDateOption }
-) => {
+export function useStopwatch(stopwatchOption?: StopwatchOption): UseStopwatchReturn {
+  const option = stopwatchOption?.option || defaultStateDateOption;
   const { date: startAt, setDate: setStartAt } = useDate({
     ...option,
     key: option.mode == "local" ? `${option.key}_start` : undefined,
@@ -31,7 +32,7 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
   const [isRunning, setIsRunning] = useState(false);
   const [calcTime, setCalculatedTime] = useState(tempTime ? tempTime.getTime() : 0);
 
-  const start = () => {
+  const start = useCallback(() => {
     setIsRunning(true);
     const now = new Date();
     if (option.defaultValue) {
@@ -41,10 +42,10 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     }
     setRestartDate(now);
     setCalculatedTime(Date.now());
-  };
+  }, [option.defaultValue, setRestartDate, setStartAt]);
 
   /** restart the stopwatch */
-  const resume = () => {
+  const resume = useCallback(() => {
     if (!restartDate) throw new Error("restartDate is null");
     if (!tempTime) throw new Error("tempTime date is null");
     setIsRunning(true);
@@ -52,15 +53,15 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     const tmp = new Date(Date.now() - durationBetweenStartAndTemp);
     setRestartDate(tmp);
     setCalculatedTime(Date.now());
-  };
+  }, [restartDate, setRestartDate, tempTime]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setStartAt(null);
     setCalculatedTime(0);
-  };
+  }, [setStartAt]);
 
   /** returns Interval from start */
-  const stop = () => {
+  const stop = useCallback(() => {
     if (!startAt) throw new Error("date is null");
     setIsRunning(false);
     const now = new Date();
@@ -72,7 +73,7 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     };
     setTempTime(now);
     return interval;
-  };
+  }, [setTempTime, startAt]);
 
   useEffect(() => {
     let timerInterval: number | undefined = undefined;
@@ -86,15 +87,20 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
     };
   }, [isRunning, startAt]);
 
-  const getInterval = (date: Date | null | undefined) => ({
-    seconds: date && calcTime ? differenceInSeconds(calcTime, date) % 60 : 0,
-    minutes: date && calcTime ? differenceInMinutes(calcTime, date) % 60 : 0,
-    hours: date && calcTime ? differenceInHours(calcTime, date) % 24 : 0,
-  });
+  const getInterval = useCallback(
+    (date: Date | null | undefined) => ({
+      seconds: date && calcTime ? differenceInSeconds(calcTime, date) % 60 : 0,
+      minutes: date && calcTime ? differenceInMinutes(calcTime, date) % 60 : 0,
+      hours: date && calcTime ? differenceInHours(calcTime, date) % 24 : 0,
+    }),
+    [calcTime]
+  );
+
+  const interval = useMemo(() => getInterval(startAt), [getInterval, startAt]);
 
   return {
     startAt,
-    interval: getInterval(restartDate),
+    interval,
     operations: {
       isRunning,
       stop,
@@ -103,4 +109,4 @@ export const useStopwatch: (option?: StopwatchOption) => UseStopwatchReturn = (
       resume,
     },
   };
-};
+}

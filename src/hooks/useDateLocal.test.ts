@@ -1,7 +1,9 @@
 import { act, renderHook } from "@testing-library/react-hooks";
+
+import { UseDateOption } from "../types/useDateOption";
+
 import { useStorageState } from "./useStorageState";
 import { useDate } from "./useDate";
-import { UseDateOption } from "../types/useDateOption";
 
 // Mock the useStorageState hook
 jest.mock("./useStorageState");

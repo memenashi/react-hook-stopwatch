@@ -5,7 +5,7 @@ type SetValue<T> = React.Dispatch<React.SetStateAction<T>>;
 export function useStorageState<T>(
   key: string,
   initialValue?: T,
-  reviver?: (key: string, value: any) => any
+  reviver?: (key: string, value: unknown) => unknown
 ): [T | undefined, SetValue<T | undefined>] {
   const [storedValue, setStoredValue] = useState<T | undefined>(() => {
     const item = window.localStorage.getItem(key);

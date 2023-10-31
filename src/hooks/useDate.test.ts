@@ -1,6 +1,9 @@
 import { renderHook, act } from "@testing-library/react-hooks";
+
+import { UseDateOption } from "../types/useDateOption";
+import { NullableDate } from "../types/nullableDate";
+
 import { useDate } from "./useDate";
-import { useStorageState } from "./useStorageState";
 
 describe("useDate", () => {
   beforeEach(() => {

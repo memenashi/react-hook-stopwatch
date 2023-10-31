@@ -1,18 +1,20 @@
 import { useState } from "react";
-import { useStorageState } from "./useStorageState";
+
 import { UseDateOption, UseDateReturn } from "../types/useDateOption";
 import { NullableDate } from "../types/nullableDate";
 
-export const useDate: (option: UseDateOption) => UseDateReturn = ({ defaultValue, key, mode }) => {
+import { useStorageState } from "./useStorageState";
+
+export function useDate({ defaultValue, key, mode }: UseDateOption): UseDateReturn {
   const [time, setTime] = useState<NullableDate>(defaultValue);
   const [localTime, setLocalTime] = useStorageState<NullableDate>(
     `time_${key ?? ""}`,
     defaultValue,
     (_key, value) => {
       if (value === null) return value;
-      return new Date(value);
+      if (typeof value === "string" || typeof value === "number") return new Date(value);
     }
   );
   const isState = mode == "state";
   return { date: isState ? time : localTime, setDate: isState ? setTime : setLocalTime };
-};
+}

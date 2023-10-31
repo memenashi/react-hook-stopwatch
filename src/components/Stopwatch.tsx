@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { useStopwatch } from "../hooks/useStopwatch";
 import { StopWatchDuration, StopWatchOperations, StopwatchOption } from "../types";
 
