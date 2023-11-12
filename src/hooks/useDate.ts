@@ -11,5 +11,16 @@ export function useDate({ defaultValue, key, mode }: UseDateOption): UseDateRetu
     defaultValue
   );
   const isState = mode == "state";
-  return { date: isState ? time : localTime, setDate: isState ? setTime : setLocalTime };
+  return { date: isState ? time : parseDate(localTime), setDate: isState ? setTime : setLocalTime };
 }
+
+const parseDate: (value: unknown) => NullableDate = (value: unknown) => {
+  if (value == null) return null;
+  if (value instanceof Date) {
+    return value;
+  }
+  if (typeof value === "number" || typeof value === "string") {
+    return new Date(value);
+  }
+  throw new Error("invalid date");
+};

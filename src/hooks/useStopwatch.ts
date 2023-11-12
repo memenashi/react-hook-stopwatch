@@ -30,6 +30,7 @@ export function useStopwatch(stopwatchOption?: StopwatchOption): UseStopwatchRet
     defaultValue: new Date(),
   } as UseDateOption);
   const [isRunning, setIsRunning] = useState(false);
+  console.log("tempTime", tempTime, typeof tempTime);
   const [calcTime, setCalculatedTime] = useState(tempTime ? tempTime.getTime() : 0);
 
   const start = useCallback(() => {

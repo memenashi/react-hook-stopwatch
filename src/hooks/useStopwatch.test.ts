@@ -1,11 +1,14 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 
-import { useStopwatch } from "./useStopwatch";
 import { StopwatchOption } from "../types";
 
+import { useStopwatch } from "./useStopwatch";
+
 describe("useStopwatch", () => {
-  let originalSetInterval;
-  let originalClearInterval;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let originalSetInterval: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let originalClearInterval: any;
 
   const mockSetInterval = jest.fn();
   const mockClearInterval = jest.fn();
@@ -14,8 +17,13 @@ describe("useStopwatch", () => {
     originalSetInterval = window.setInterval;
     originalClearInterval = window.clearInterval;
 
-    window.setInterval = mockSetInterval as any;
-    window.clearInterval = mockClearInterval as any;
+    window.setInterval = mockSetInterval as never;
+    window.clearInterval = mockClearInterval as never;
+  });
+
+  afterAll(() => {
+    window.setInterval = originalSetInterval;
+    window.clearInterval = originalClearInterval;
   });
 
   test("should be defined", () => {

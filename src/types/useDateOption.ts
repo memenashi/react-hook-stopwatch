@@ -1,10 +1,12 @@
+import { Dispatch, SetStateAction } from "react";
+
 import { NullableDate } from "./nullableDate";
 
 export type DispatchDate = NullableDate | ((prev: NullableDate) => NullableDate);
 
 export interface UseDateReturn {
   date: NullableDate;
-  setDate: (value: DispatchDate) => void;
+  setDate: Dispatch<SetStateAction<NullableDate>>;
 }
 
 interface DateOptionBase {
