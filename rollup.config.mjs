@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import typescript from "rollup-plugin-typescript2";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import copy from "rollup-plugin-copy";
-import terser from "rollup-plugin-terser";
+import { terser } from "rollup-plugin-terser";
 
 import packageJson from "./package.json" assert { type: "json" };
 
