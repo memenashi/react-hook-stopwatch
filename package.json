@@ -24,7 +24,7 @@
     "types"
   ],
   "dependencies": {
-    "date-fns": "^2.29.3",
+    "date-fns": "^3.0.0",
     "react-use": "^17.4.0"
   },
   "devDependencies": {
