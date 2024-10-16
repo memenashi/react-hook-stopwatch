@@ -33,7 +33,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.16.7, @babel/code-frame@npm:^7.22.13":
+"@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.16.7, @babel/code-frame@npm:^7.22.13":
   version: 7.22.13
   resolution: "@babel/code-frame@npm:7.22.13"
   dependencies:
@@ -3106,19 +3106,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-terser@npm:^0.4.4":
-  version: 0.4.4
-  resolution: "@rollup/plugin-terser@npm:0.4.4"
+"@rollup/plugin-terser@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@rollup/plugin-terser@npm:0.1.0"
   dependencies:
-    serialize-javascript: "npm:^6.0.1"
-    smob: "npm:^1.0.0"
-    terser: "npm:^5.17.4"
+    terser: "npm:^5.15.1"
   peerDependencies:
-    rollup: ^2.0.0||^3.0.0||^4.0.0
+    rollup: ^2.x || ^3.x
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: b9cb6c8f02ac1c1344019e9fb854321b74f880efebc41b6bdd84f18331fce0f4a2aadcdb481042245cd3f409b429ac363af71f9efec4a2024731d67d32af36ee
+  checksum: 4849fef63e8328f103d582e0ea8da3c982f19d8417223665730c9b852ea4735a4b07358535ef6a555a09aaccdaee1742b92fd6b7b52aa2bebe7421eb8c0787a5
   languageName: node
   linkType: hard
 
@@ -9816,17 +9814,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-worker@npm:^26.2.1":
-  version: 26.6.2
-  resolution: "jest-worker@npm:26.6.2"
-  dependencies:
-    "@types/node": "npm:*"
-    merge-stream: "npm:^2.0.0"
-    supports-color: "npm:^7.0.0"
-  checksum: 07e4dba650381604cda253ab6d5837fe0279c8d68c25884995b45bfe149a7a1e1b5a97f304b4518f257dac2a9ddc1808d57d650649c3ab855e9e60cf824d2970
-  languageName: node
-  linkType: hard
-
 "jest-worker@npm:^27.4.5":
   version: 27.5.1
   resolution: "jest-worker@npm:27.5.1"
@@ -11807,7 +11794,7 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.21.0"
     "@rollup/plugin-commonjs": "npm:^25.0.0"
     "@rollup/plugin-node-resolve": "npm:^15.0.1"
-    "@rollup/plugin-terser": "npm:^0.4.4"
+    "@rollup/plugin-terser": "npm:^0.1.0"
     "@rollup/plugin-typescript": "npm:^11.0.0"
     "@storybook/addon-essentials": "npm:7"
     "@storybook/react": "npm:7"
@@ -11833,7 +11820,6 @@ __metadata:
     rollup: "npm:^4.0.0"
     rollup-plugin-copy: "npm:^3.4.0"
     rollup-plugin-peer-deps-external: "npm:^2.2.4"
-    rollup-plugin-terser: "npm:^7.0.2"
     rollup-plugin-typescript2: "npm:^0.36.0"
     storybook: "npm:7"
     ts-loader: "npm:^9.4.2"
@@ -12381,20 +12367,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-terser@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "rollup-plugin-terser@npm:7.0.2"
-  dependencies:
-    "@babel/code-frame": "npm:^7.10.4"
-    jest-worker: "npm:^26.2.1"
-    serialize-javascript: "npm:^4.0.0"
-    terser: "npm:^5.0.0"
-  peerDependencies:
-    rollup: ^2.0.0
-  checksum: f79b851c6f7b06555d3a8ce7a4e32abd2b7cb8318e89fb8db73e662fa6e3af1a59920e881d111efc65a7437fd9582b61b1f4859b6fd839ba948616829d92432d
-  languageName: node
-  linkType: hard
-
 "rollup-plugin-typescript2@npm:^0.36.0":
   version: 0.36.0
   resolution: "rollup-plugin-typescript2@npm:0.36.0"
@@ -12625,15 +12597,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serialize-javascript@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "serialize-javascript@npm:4.0.0"
-  dependencies:
-    randombytes: "npm:^2.1.0"
-  checksum: 510dfe7f0311c0b2f7ab06311afa1668ba2969ab2f1faaac0a4924ede76b7f22ba85cfdeaa0052ec5a047bca42c8cd8ac8df8f0efe52f9bd290b3a39ae69fe9d
-  languageName: node
-  linkType: hard
-
 "serialize-javascript@npm:^6.0.1":
   version: 6.0.1
   resolution: "serialize-javascript@npm:6.0.1"
@@ -12767,13 +12730,6 @@ __metadata:
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
   checksum: a16775323e1404dd43fabafe7460be13a471e021637bc7889468eb45ce6a6b207261f454e4e530a19500cc962c4cc5348583520843b363f4193cee5c00e1e539
-  languageName: node
-  linkType: hard
-
-"smob@npm:^1.0.0":
-  version: 1.4.1
-  resolution: "smob@npm:1.4.1"
-  checksum: 89601485b35a3d785b701a79138de311448cf7fe18fef653013944d4e4fdcce78ae7bc8e1f8f58edac2d6b1979d95676b6f41e528ba855ef0f600ae35abb8756
   languageName: node
   linkType: hard
 
@@ -13162,7 +13118,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^7.0.0, supports-color@npm:^7.1.0":
+"supports-color@npm:^7.1.0":
   version: 7.2.0
   resolution: "supports-color@npm:7.2.0"
   dependencies:
@@ -13317,20 +13273,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:^5.0.0, terser@npm:^5.17.4":
-  version: 5.24.0
-  resolution: "terser@npm:5.24.0"
-  dependencies:
-    "@jridgewell/source-map": "npm:^0.3.3"
-    acorn: "npm:^8.8.2"
-    commander: "npm:^2.20.0"
-    source-map-support: "npm:~0.5.20"
-  bin:
-    terser: bin/terser
-  checksum: 9a73ae528210242593d8bbc46af8a235fb0a7607707910a7c5cb85a7d2692d0780019dcbf34734b3cb2591111cc41628f1dce1608dccd3201b6843458ebe9e00
-  languageName: node
-  linkType: hard
-
 "terser@npm:^5.10.0, terser@npm:^5.16.8":
   version: 5.22.0
   resolution: "terser@npm:5.22.0"
@@ -13342,6 +13284,20 @@ __metadata:
   bin:
     terser: bin/terser
   checksum: 76471196c7b86d65ea169c5a5cd66d470511064cf8592fd427cede1f36b842fdb196cb1e3df8eea12327ef9da847b01637b5776f637d34d1204484a492b6da8e
+  languageName: node
+  linkType: hard
+
+"terser@npm:^5.15.1":
+  version: 5.35.0
+  resolution: "terser@npm:5.35.0"
+  dependencies:
+    "@jridgewell/source-map": "npm:^0.3.3"
+    acorn: "npm:^8.8.2"
+    commander: "npm:^2.20.0"
+    source-map-support: "npm:~0.5.20"
+  bin:
+    terser: bin/terser
+  checksum: c9899d23c2d1548329d5b5717cb0cfaae5cfa26e6c4930daebc7a4dc00658c3ca44c06626777a9d09f03b2b13338921769c0eb56b6ad8560d705a375425129d6
   languageName: node
   linkType: hard
 
